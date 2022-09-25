@@ -1,0 +1,15 @@
+version: '3'
+
+services:
+  waDb-test:
+    image: amazon/dynamodb-local
+    container_name: waDb-test
+    hostname: waDb-test
+    ports:
+      - '8042:8042'
+    volumes:
+      - waDb_data:/home/dynamodblocal
+    command: "-jar DynamoDBLocal.jar -sharedDb -dbPath . -port 8042"
+
+volumes:
+  waDb_data:
